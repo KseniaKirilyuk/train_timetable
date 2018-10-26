@@ -1,11 +1,4 @@
-var trainName="";
-var destination="";
-var frequency=0;
-var now=moment().format('HH:mm');
-var minutesAway= now - arrival;
-var arrival = 0;
-
-
+$(document).ready(function(){
 var config = {
     apiKey: "AIzaSyDNu1uU8UQfLK30OGjjW6kVrHPhlNHqnus",
     authDomain: "train-timetable-769bb.firebaseapp.com",
@@ -14,31 +7,45 @@ var config = {
     storageBucket: "train-timetable-769bb.appspot.com",
     messagingSenderId: "788472207757"
   };
-  firebase.initializeApp(config);
+firebase.initializeApp(config);
+
+//display the current time time 
+$("#currentTime").html(moment().format("hh:mm A"));
+
+var trainData = firebase.database().ref();
 
 $("#addTrain").on("click", function(){
-	trainName=$("#trainNameDisplay").val();
-	destination=$("#destinationDisplay").val();
-	frequency=$("#frequencyDisplay").val();
-	arrival=$("#tranTimeDisplay").val();
-	//minutesAway=$("#trainNameDisplay").val().trim();
+    event.preventDefault();
 
-	firebase.database().ref().push({
-		trainName:trainName,
-		destination:destination,
-		frequency:frequency,
-		arrival:arrival,
-		minutesAway:minutesAway
+    var trainName = $("#trainNameDisplay").val(); //trim() does not work?
+    var destination = $("#destinationDisplay").val();
+    var firstTrainTime = $("firstTrainTimeDisplay").val();
+    var frequency = $("#frequencyDisplay").val();
 
-	})
+    trainData.push({
+        trainName:trainName,
+        destination:destination,
+        frequency:frequency,
+        minutesAway:minutesAway
+
+    })
+
+    //clear inputs
+    $("#trainNameDisplay").val("");
+    $("#destinationDisplay").val("");
+    $("firstTrainTimeDisplay").val("");
+    $("#frequencyDisplay").val("");
+});
+
+
+
+trainData.on("child_added", function(snapshot){
+    var snapshot = snapshot.val();
+    var snapTrainName = snapshot.trainName;
+    var snapDestination = snapshot.destination;
+    var snapFreq = snapshot.frequency;
+
+    var arrival;
 })
 
-firebase.database().ref().on("child_added", function(snapshot){
-	$("tbody").append('<tr>'
-		+'<th>'+snapshot.val().trainName+'</th>'
-		+'<td> '+ snapshot.val().destination+'</td>'
-		+'<td> '+ snapshot.val().frequency + '</td>'
-		+'<td> '+ snapshot.val().arrival + '</td>'
-		+'<td> '+ snapshot.val().minutesAway + '</td>'
-		+'</tr>')
 })
