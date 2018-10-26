@@ -14,9 +14,10 @@ $("#currentTime").html(moment().format("hh:mm A"));
 
 var trainData = firebase.database().ref();
 
-$("#addTrain").on("click", function(){
-    event.preventDefault();
 
+$("#addTrain").on("click", function(){
+
+    event.preventDefault();
     var trainName = $("#trainNameDisplay").val(); //trim() does not work?
     var destination = $("#destinationDisplay").val();
     var firstTrainTime = $("firstTrainTimeDisplay").val();
@@ -25,12 +26,12 @@ $("#addTrain").on("click", function(){
     trainData.push({
         trainName:trainName,
         destination:destination,
-        frequency:frequency,
-        minutesAway:minutesAway
+        frequency:frequency
+        //minutesAway:minutesAway
 
     })
 
-    //clear inputs
+    //clear inputs(?? is it a good way to clean??)
     $("#trainNameDisplay").val("");
     $("#destinationDisplay").val("");
     $("firstTrainTimeDisplay").val("");
@@ -41,11 +42,11 @@ $("#addTrain").on("click", function(){
 
 trainData.on("child_added", function(snapshot){
     var snapshot = snapshot.val();
-    var snapTrainName = snapshot.trainName;
-    var snapDestination = snapshot.destination;
-    var snapFreq = snapshot.frequency;
+    snaptrainName= snapshot.trainName;
+    snapdestination=snapshot.destination;
+    snapfrequency=snapshot.frequency;
+    $("tbody").append("<tr><td>" + snaptrainName + "</td><td>" + snapdestination + "</td><td>" + snapfrequency + "</td></tr>");
 
-    var arrival;
 })
 
 })
