@@ -9,44 +9,64 @@ var config = {
   };
 firebase.initializeApp(config);
 
-//display the current time time 
-$("#currentTime").html(moment().format("hh:mm A"));
-
 var trainData = firebase.database().ref();
 
+
+//display the current time time 
+$("#currentTime").html(moment().format("hh:mm A"));
 
 $("#addTrain").on("click", function(){
 
     event.preventDefault();
-    var trainName = $("#trainNameDisplay").val(); //trim() does not work?
-    var destination = $("#destinationDisplay").val();
-    var firstTrainTime = $("firstTrainTimeDisplay").val();
-    var frequency = $("#frequencyDisplay").val();
+    //get information
+    var trainName = $("#trainNameInput").val().trim();
+    var destination = $("#destinationInput").val().trim();
+    var firstTrainTime = moment($("#firstTrainTimeInput").val(), "HH:mm").subtract(1, "years").format("X");//format of unix timestamp
+    console.log(firstTrainTime);
+    var frequency = $("#frequencyInput").val();
 
-    trainData.push({
+    //adding new information by creating a new Object
+    trainData.push({           
         trainName:trainName,
+        firstTrainTime:firstTrainTime,
         destination:destination,
         frequency:frequency
-        //minutesAway:minutesAway
+    });
 
-    })
+    //clean inputs
+    $("#trainNameInput").val("");
+    $("#destinationInput").val("");
+    $("#firstTrainTimeInput").val("");
+    $("#frequencyInput").val("");
 
-    //clear inputs(?? is it a good way to clean??)
-    $("#trainNameDisplay").val("");
-    $("#destinationDisplay").val("");
-    $("firstTrainTimeDisplay").val("");
-    $("#frequencyDisplay").val("");
+
 });
 
-
-
 trainData.on("child_added", function(snapshot){
-    var snapshot = snapshot.val();
-    snaptrainName= snapshot.trainName;
-    snapdestination=snapshot.destination;
-    snapfrequency=snapshot.frequency;
-    $("tbody").append("<tr><td>" + snaptrainName + "</td><td>" + snapdestination + "</td><td>" + snapfrequency + "</td></tr>");
+    var data = snapshot.val();
+    var dTrainName= data.trainName;
+    var dFirstTrainTime=data.firstTrainTime;
+    var dDestination=data.destination;
+    var dFrequency=data.frequency;
+    
+    var remainder= moment().diff(moment.unix(dFirstTrainTime), "minutes") % dFrequency;
+    console.log(diff);
+
+
+    var minutesTillTrain=dFrequency - remainder;
+    console.log(minutesTillTrain);
+
+    var nextTrain= moment().add(minutesTillTrain, "minutes").format("hh:mm A");
+    console.log(nextTrain);
+    //display values
+    $("tbody").append("<tr><td>" + dTrainName + "</td><td>" 
+                    + dDestination + "</td><td>" 
+                    + dFrequency + "</td><td>"
+                    +nextTrain+"</td><td>"
+                    +minutesTillTrain+"</td></tr>");
+
+});
 
 })
 
-})
+

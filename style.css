@@ -1,0 +1,15 @@
+@font-face {
+    font-family: garamond;
+    src: url(assets/garamondReg.otf);
+}
+@font-face {
+    font-family: garamondItal;
+    src: url(assets/garamondItal.otf);
+}
+@font-face {
+    font-family: garamondB;
+}
+
+body{
+	font-family:garamondB;
+}
