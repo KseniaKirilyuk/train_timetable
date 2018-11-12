@@ -138,3 +138,21 @@ input#firstTrainTimeInput {
 }
 /**/
 #lastPage, #lastPage img{width:100%;}
+
+@media only screen and (max-width: 600px) {
+  section#timtablePage{flex-direction: column;}
+  .leftImg, .rightImg {width: 100%;}
+  .leftImg img {max-width: 100%;}
+  .leftImg {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#timtablePage{flex-direction: column;}
+section#timtablePage {
+	height: auto;    
+	padding-top: 50px;
+    padding-bottom: 50px;}
+#lastPage{background-size: cover;}
+
+}
