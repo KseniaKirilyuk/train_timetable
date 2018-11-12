@@ -136,23 +136,56 @@ input#firstTrainTimeInput {
 	background: url("assets/istanbul_1.jpg") repeat  center fixed;
 	background-size: cover;
 }
-/**/
 #lastPage, #lastPage img{width:100%;}
-
+ 
 @media only screen and (max-width: 600px) {
-  section#timtablePage{flex-direction: column;}
-  .leftImg, .rightImg {width: 100%;}
-  .leftImg img {max-width: 100%;}
-  .leftImg {
+.leftImg, .rightImg {width: 100%;}
+.leftImg img {display:none;}
+.leftImg {
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-#timtablePage{flex-direction: column;}
-section#timtablePage {
-	height: auto;    
-	padding-top: 50px;
-    padding-bottom: 50px;}
-#lastPage{background-size: cover;}
-
+.leftImg p {margin-top: 0;}
+.leftNavText {
+    transform: rotate(-90deg) translateY(-262%);
+    font-size: 1.3rem;
 }
+#timetablePage {
+	flex-direction: column;
+	height: auto;    
+	padding-top:50px;
+    padding-bottom: 50px;
+}
+.timetableContainer {width: 100%;}
+.rightNavText {transform: rotate(90deg) translateY(-220%);}
+.leftImg p{font-size:15px; text-align: center;}
+.imagePage {padding-top: 10px;}
+.sideTrain img {display: none;}
+#lastPage{background-size: cover;}
+.imagePage{flex-direction: column;}
+.mySlides{ width: 90%; margin: 0 auto;}
+.topHeader th.h3 {
+    text-align: center;
+    margin: 0 auto;
+    width: 300px;
+    display: block;
+}
+tr.headerShedule {display: block;}
+tbody#tableTrain {display: block;}
+tr.headerShedule th {
+    padding: 9.2px;
+    text-align: center;
+    vertical-align: text-top;
+}
+}
+
+
+
+
+
+
+
+
+
+
