@@ -1,3 +1,4 @@
+*{box-sizing: border-box;}
 @font-face {
     font-family: garamond;
     src: url(assets/garamondReg.otf);
@@ -13,3 +14,123 @@
 body{
 	font-family:garamondB;
 }
+/**parallax**/
+#timtablePage, #lastPage{
+	width:100%;
+	height: 100vh;
+	perspective: 1px;
+  	transform: translateZ(-10px);
+  	overflow-x: hidden;
+  	overflow-y: auto;
+}
+.img.container{
+	max-width:1200px;
+}
+.mySlides{
+	width:100%;
+	height: auto;
+}
+
+/**text directions for front page**/
+.leftNav, .rightNav{
+	position: fixed;
+    top: 50%;
+    text-align: center;
+    width: 200px;
+}
+.leftNav{left: 0;}
+.rightNav{right: 0;}
+.leftNavText{
+	transform:rotate(-90deg) translateY(-100%);
+    transform-origin:  center center;
+    font-size: 1.5625rem;
+}
+.rightNavText{
+    transform: rotate(90deg) translateY(-100%);
+    transform-origin:  center center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5625rem;
+}
+/**image page**/
+
+/**timetable page**/
+#timtablePage {
+    position: relative;
+    z-index: 10;
+}
+.timetableContainer {
+    background-color: rgb(244,239,231);
+}
+
+.imagePage{justify-content: space-between;}
+
+.leftImg, .rightImg {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.rightImg img{ 
+	max-width: 90%;
+    height: auto;}
+.imagePage {
+    justify-content: space-between;
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.leftImg {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.leftImg img {
+    max-width: 300px;
+    height:auto;
+    align-self: center;
+}
+.leftImg p{margin-top: 40px;font-size: 20px;}
+
+/*form*/
+#timtablePage{background-color: rgb(244,239,231)}
+.timetableContainer{width:50%;}
+input#trainNameInput, input#destinationInput, input#frequencyInput {
+    border: none;
+    border-bottom: 1px solid #aaa; 
+    border-radius: 0;
+    background-color: rgb(244,239,231);
+}
+#firstTrainTimeInput{background-color: transparent;}
+
+.tmFr, .trDes {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.form-group {
+    width: 80%;
+    min-width: 200px;
+}
+.form-group.trainTime {
+    display: flex;
+    flex-direction: column;
+}
+input#firstTrainTimeInput {
+    width: 100px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+.btn-primary {
+    color: black;
+    background-color: transparent;
+    border-color: #aaa;
+}
+.table thead th, .table th {border: none;}
+#lastPage{
+	background: url("assets/istanbul_1.jpg") repeat  center fixed;
+	background-size: cover;
+}
+/**/
+#lastPage, #lastPage img{width:100%;}

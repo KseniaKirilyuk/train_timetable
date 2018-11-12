@@ -12,54 +12,85 @@
 
 
 <body>
-<section class="container">
+	<header id="frontPage" class="d-flex">
+		<div class="leftNav">
+			<div class="leftNavText">Lorem ipsum dolor</div>
+		</div>
+		<div class="img container">
+			<img class="mySlides" src="assets/expressTrain.jpg">
+			 <img class="mySlides" src="assets/chanel_train.jpg">
+			 
+		</div>
+		<div class="rightNav">
+			<div class="rightNavText">Lorem ipsum</div>
+		</div>
+	</header>
+	<section class="img container imagePage d-flex">
+		<div class="leftImg"><img src="assets/trainInside2.jpeg">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, veniam.</p></div>
+		<div class="rightImg"><img src="assets/avedon.jpg"></div>
+	</section>
+	
+	<section id="timtablePage" class="d-flex">
+	<div class="container timetableContainer">
 
-	<div id="currentTime"></div>
+		<!--<div id="currentTime"></div>-->
 
-	<table class="table">
-	  <thead>
-	  	<tr>
-	  		<th>Current Train Schedule</th>
-	  	</tr>
-	    <tr>
-	      <th scope="col">Train Name</th>
-	      <th scope="col">Destination</th>
-	      <th scope="col">Frequency (min)</th>
-	      <th scope="col">Next Arrival</th>
-	      <th scope="col">Minutes Away</th>
-	    </tr>
-	  </thead>
-	  <tbody id="tableTrain"> </tbody>
-	</table>
+		<table class="table">
+		  <thead>
+		  	<tr>
+		  		<th class="h3">Train Schedule</th>
+		  	</tr>
+		    <tr class="headerShedule">
+		      <th scope="col">Train Name</th>
+		      <th scope="col">Destination</th>
+		      <th scope="col">Frequency (min)</th>
+		      <th scope="col">Next Arrival</th>
+		      <th scope="col">Minutes Away</th>
+		    </tr>
+		  </thead>
+		  <tbody id="tableTrain"> </tbody>
+		</table>
 
-	<form>
-	  <div class="form-group">
-	    <label for="trainNameInput">Train Name</label>
-	    <input type="text" class="form-control" id="trainNameInput">
-	  </div>
+		<form>
+		<div class="wrapper d-flex">
+		<div class="trDes">
+		  <div class="form-group">
+		    <label for="trainNameInput">Train Name</label>
+		    <input type="text" class="form-control" id="trainNameInput">
+		  </div>
 
-	  <div class="form-group">
-	    <label for="destinationInput">Destination</label>
-	    <input type="text" class="form-control" id="destinationInput">
-	  </div>
+		  <div class="form-group">
+		    <label for="destinationInput">Destination</label>
+		    <input type="text" class="form-control" id="destinationInput">
+		  </div>
+		</div>
+		<div class="tmFr">
+		  <div class="form-group trainTime">
+		    <label for="firstTrainTimeInput">First Train Time </label>
+		    <input type="time" id="firstTrainTimeInput" min="00:00" max="24:00" required />
+		  </div>
 
-	  <div class="form-group">
-	    <label for="firstTrainTimeInput">First Train Time </label>
-	    <input type="time" id="firstTrainTimeInput" min="00:00" max="24:00" required />
-	  </div>
+		  <div class="form-group frequency">
+		    <label for="frequencyInput">Frequency (min)</label>
+		    <input type="number" class="form-control"  id="frequencyInput" required/>
+		  </div>
+		</div>
+		</div>
+		   <button type="submit" id="addTrainButton" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+	<div class="sideTrain">
+		<img src="assets/clock.jpg" alt="railway">
+	</div>
+	</section>
 
-	  <div class="form-group">
-	    <label for="frequencyInput">Frequency (min)</label>
-	    <input type="number" class="form-control"  id="frequencyInput" required/>
-	  </div>
-
-	   <button type="submit" id="addTrainButton" class="btn btn-primary">Submit</button>
-	</form>
-
+<section id="lastPage">
+	
 </section>
 
  <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 <!--my js-->
 	<script src="app.js"></script>
 </body>

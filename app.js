@@ -15,7 +15,7 @@ var trainData = firebase.database().ref();
 //display the current time time 
 $("#currentTime").html(moment().format("hh:mm A"));
 
-$("#addTrain").on("click", function(){
+$("#addTrainButton").on("click", function(){
 
     event.preventDefault();
     //get information
@@ -50,7 +50,7 @@ trainData.on("child_added", function(snapshot){
     var dFrequency=data.frequency;
     
     var remainder= moment().diff(moment.unix(dFirstTrainTime), "minutes") % dFrequency;
-    console.log(diff);
+    console.log(remainder);
 
 
     var minutesTillTrain=dFrequency - remainder;
@@ -66,6 +66,25 @@ trainData.on("child_added", function(snapshot){
                     +minutesTillTrain+"</td></tr>");
 
 });
+
+//  STYLING PAGE
+
+//slider
+var slideIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none"; 
+    }
+    slideIndex++;
+    if (slideIndex > x.length) {slideIndex = 1} 
+    x[slideIndex-1].style.display = "block"; 
+    //setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+
 
 })
 
