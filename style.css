@@ -92,7 +92,11 @@ body{
 .leftImg p{margin-top: 40px;font-size: 20px;}
 
 /*form*/
-#timtablePage{background-color: rgb(244,239,231)}
+#timtablePage{
+	background-color: rgb(244,239,231);
+    align-items: center;
+    justify-content: center;
+}
 .timetableContainer{width:50%;}
 input#trainNameInput, input#destinationInput, input#frequencyInput {
     border: none;
